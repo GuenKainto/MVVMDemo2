@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace MVVMDemo2.ViewModel
 {
-    public class BookViewModel
+    internal class BookViewModel : BindableBase
     {
         public MyICommand DeleteCommand { get; set; }
         public BookViewModel()

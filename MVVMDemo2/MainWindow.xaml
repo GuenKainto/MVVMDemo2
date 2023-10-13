@@ -5,9 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MVVMDemo2"
         xmlns:views="clr-namespace:MVVMDemo2.View"
+        xmlns:viewModels = "clr-namespace:MVVMDemo2.ViewModel" 
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <DataTemplate DataType = "{x:Type viewModels:BookViewModel}">
+            <views:BookView/>
+        </DataTemplate>
+
+        <DataTemplate DataType = "{x:Type viewModels:MangaViewModel}">
+            <views:MangaView/>
+        </DataTemplate>
+    </Window.Resources>
+
     <Grid>
-        <views:BookView x:Name="BookViewControl" Loaded="BookViewControl_Loaded"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height = "Auto" />
+            <RowDefinition Height = "*" />
+        </Grid.RowDefinitions>
+
+        <Grid x:Name = "NavBar">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width = "*" />
+                <ColumnDefinition Width = "*" />
+                <ColumnDefinition Width = "*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Content = "Book" 
+            Command = "{Binding NavCommand}"
+            CommandParameter = "Book" 
+            Grid.Column = "0" />
+
+            <Button Content = "Manga" 
+            Command = "{Binding NavCommand}" 
+            CommandParameter = "Manga" 
+            Grid.Column = "2" />
+        </Grid>
+
+        <Grid x:Name = "MainContent" Grid.Row = "1">
+            <ContentControl Content = "{Binding CurrentViewModel}" />
+        </Grid>
+
     </Grid>
 </Window>

@@ -13,24 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MVVMDemo2
+namespace MVVMDemo2.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MangaView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MangaView : UserControl
     {
-        public MainWindow()
+        public MangaView()
         {
             InitializeComponent();
         }
-
-        /*private void BookViewControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            MVVMDemo2.ViewModel.BookViewModel bookViewModelObject = new MVVMDemo2.ViewModel.BookViewModel();
-            bookViewModelObject.AddTempBookIntoList();
-
-            BookViewControl.DataContext = bookViewModelObject;
-        }*/
     }
 }
