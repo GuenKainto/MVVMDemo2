@@ -26,7 +26,7 @@
     </UserControl.Resources>
 
     <Grid>
-        <DataGrid Name="Book_dtg" ItemsSource="{Binding ListBook}" HorizontalAlignment="Center" Width="600" Margin="0,36,0,225" AutoGenerateColumns="False">
+        <DataGrid Name="Book_dtg" ItemsSource="{Binding ListBook}" HorizontalAlignment="Left" Width="429" Margin="53,37,0,224" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Width="1*" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Name" Width="4*" Binding="{Binding Name}"/>
@@ -34,9 +34,12 @@
                 <DataGridTextColumn Header="Publisher" Width="2.5*" Binding="{Binding Publisher}"/>
             </DataGrid.Columns>
         </DataGrid>
-            
+
         <ListBox 
          ItemsSource = "{Binding ListBook}" 
-         ItemTemplate = "{StaticResource ListBookTemplate}" Margin="100,240,100,40"/>
+         ItemTemplate = "{StaticResource ListBookTemplate}" Margin="54,241,318,39"/>
+
+        <Button Margin="588,37,139,382" Content="Delete"
+                Command="{Binding DeleteCommand}"/>
     </Grid>
 </UserControl>
