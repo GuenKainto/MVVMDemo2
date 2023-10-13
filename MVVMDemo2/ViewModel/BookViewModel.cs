@@ -1,6 +1,7 @@
 ﻿using MVVMDemo2.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Security.Policy;
@@ -18,10 +19,10 @@ namespace MVVMDemo2.ViewModel
             AddTempBookIntoList();
             DeleteCommand = new MyICommand(OnDelete, CanDelete);
         }
-        public List<Book> ListBook { get; set; }
+        public ObservableCollection<Book> ListBook { get; set; }
         public void AddTempBookIntoList()
         {
-            List<Book> books = new List<Book>();
+            ObservableCollection<Book> books = new ObservableCollection<Book>();
             books.Add(new Book("B01", "C# for beginner", "10/11/2012", "WibuCoder"));
             books.Add(new Book("B02", "C++ for beginner", "09/11/2014", "WibuCoder"));
             books.Add(new Book("B03", "Welcome to Hello World", "11/01/2010", "WibuCoder"));
