@@ -8,20 +8,35 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <DataTemplate x:Key="ListBookTemplate">
-            <Label x:Name="BookItemLabel">
-                <Label.Content>
-                    <TextBlock>
-                        <TextBlock.Text>
-                            <MultiBinding StringFormat="{}{0} - {1} - {2} - {3}">
-                                <Binding Path="Id" />
-                                <Binding Path="Name" />
-                                <Binding Path="DateRelease" />
-                                <Binding Path="Publisher" />
-                            </MultiBinding>
-                        </TextBlock.Text>
-                    </TextBlock>
-                </Label.Content>
-            </Label>
+            <StackPanel Orientation = "Horizontal">
+
+                <TextBox Text = "{Binding Path = Id, Mode = TwoWay}" 
+                Width = "100" Margin = "3 5 3 5"/>
+
+                <TextBox Text = "{Binding Path = Name, Mode = TwoWay}" 
+                Width = "100" Margin = "0 5 3 5"/>
+
+                <TextBox Text = "{Binding Path = DateRelease, Mode = TwoWay}" 
+                Margin = "0 5 3 5"/>
+
+                <TextBox Text = "{Binding Path = Publisher, Mode = TwoWay}" 
+                Margin = "0 5 3 5"/>
+
+                <Label x:Name="BookItemLabel">
+                    <Label.Content>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} - {1} - {2} - {3}">
+                                    <Binding Path="Id" />
+                                    <Binding Path="Name" />
+                                    <Binding Path="DateRelease" />
+                                    <Binding Path="Publisher" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </Label.Content>
+                </Label>
+            </StackPanel>
         </DataTemplate>
     </UserControl.Resources>
 
@@ -37,9 +52,15 @@
 
         <ListBox 
          ItemsSource = "{Binding ListBook}" 
-         ItemTemplate = "{StaticResource ListBookTemplate}" Margin="54,241,318,39"/>
+         ItemTemplate = "{StaticResource ListBookTemplate}" 
+         SelectedItem = "{Binding SelectedBook}"
+         Margin="54,241,54,39"/>
 
-        <Button Margin="588,37,139,382" Content="Delete"
-                Command="{Binding DeleteCommand}"/>
+        <Button Content="Delete"
+                Command="{Binding DeleteCommand}"
+                HorizontalAlignment = "Left" 
+                VerticalAlignment = "Top" 
+                Width = "75" Margin="671,205,0,0"/>
     </Grid>
 </UserControl>
+    

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.ComponentModel;
+using System.Windows;
 
 namespace MVVMDemo2.Model
 {
@@ -78,6 +79,11 @@ namespace MVVMDemo2.Model
                     RaisePropertyChanged(nameof(Publisher));
                 }
             }
+        }
+
+        public void CheckToString()
+        {
+            MessageBox.Show(Id + "_" + Name + "_" + DateRelease + "_" + Publisher);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
