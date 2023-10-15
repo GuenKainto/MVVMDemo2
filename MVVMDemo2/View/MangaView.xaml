@@ -43,7 +43,11 @@
                 HorizontalAlignment = "Left" 
                 VerticalAlignment = "Top" 
                 Width = "75" Margin="671,113,0,0"/>
-        
+        <Button Content="Reload"
+                Command="{Binding ReloadCommand}"
+                HorizontalAlignment = "Left" 
+                VerticalAlignment = "Top" 
+                Width = "75" Margin="671,138,0,0"/>
         <Label Content="Id:" 
                HorizontalAlignment="Left" 
                Margin="34,241,0,0" 
@@ -66,7 +70,7 @@
                VerticalAlignment="Top"/>
         
         <TextBox Name="Id_txb" 
-                 Text="{Binding Id_txb,
+                 Text="{Binding Id_txb,Mode= TwoWay,
                         ValidatesOnNotifyDataErrors = True,
                         ValidatesOnExceptions= True,
                         UpdateSourceTrigger=PropertyChanged}"  
@@ -76,7 +80,7 @@
                  VerticalAlignment="Top" 
                  Width="120"/>
         <TextBox Name="Name_txb" 
-                 Text="{Binding Name_txb,
+                 Text="{Binding Name_txb,Mode= TwoWay,
                         ValidatesOnNotifyDataErrors = True,
                         ValidatesOnExceptions= True,
                         UpdateSourceTrigger=PropertyChanged}" 
@@ -86,7 +90,7 @@
                  VerticalAlignment="Top" 
                  Width="120"/>
         <TextBox Name="Episode_txb" 
-                 Text="{Binding Episode_txb,
+                 Text="{Binding Episode_txb,Mode= TwoWay,
                         ValidatesOnNotifyDataErrors = True,
                         ValidatesOnExceptions= True,
                         UpdateSourceTrigger=PropertyChanged}" 
@@ -96,7 +100,7 @@
                  VerticalAlignment="Top" 
                  Width="120"/>
         <TextBox Name="Age_txb" 
-                 Text="{Binding Age_txb,
+                 Text="{Binding Age_txb,Mode= TwoWay,
                         ValidatesOnNotifyDataErrors = True,
                         ValidatesOnExceptions= True,
                         UpdateSourceTrigger=PropertyChanged}"
@@ -112,5 +116,6 @@
                  VerticalAlignment="Top"
                  Height="85" Width="172"
                  Margin="290,262,338,93"/>
+        
     </Grid>
 </UserControl>

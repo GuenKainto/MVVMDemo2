@@ -18,12 +18,15 @@ namespace MVVMDemo2.ViewModel
         public MyICommand AddMangaCommand { get; set; }
         public MyICommand UpdateMangaCommand { get; set; }
         public MyICommand CountItemCommand { get; set; }
+        public MyICommand ReloadCommand { get; set; }
         public MangaViewModel()
         {
             ShowUpMangaList();
             DeleteMangaCommand = new MyICommand(OnDelete, CanDelete);
             AddMangaCommand = new MyICommand(OnAdd, CanAdd);
-            CountItemCommand = new MyICommand(OnCountItem,CanCountItem);
+            UpdateMangaCommand = new MyICommand(OnUpdate, CanUpdate);
+            CountItemCommand = new MyICommand(OnCountItem);
+            ReloadCommand = new MyICommand(Reload);
             EditableManga = new SimpleEditableManga();
 
         }
@@ -46,11 +49,13 @@ namespace MVVMDemo2.ViewModel
             set
             {
                 _selectedManga = value;
+                OnPropertyChanged(nameof(SelectedManga));
+                OnSelectedItemChanged();
                 DeleteMangaCommand.RaiseCanExecuteChanged();
-                //UpdateMangaCommand.RaiseCanExecuteChanged();
+                UpdateMangaCommand.RaiseCanExecuteChanged();
             }
         }
-
+        /// /////////////////////////////////////////////
         private SimpleEditableManga _editablemanga;
         public SimpleEditableManga EditableManga
         {
@@ -61,7 +66,7 @@ namespace MVVMDemo2.ViewModel
             }
         }
 
-
+        /// ////////////////////////////////////////////
 
         private string _id_txb;
         public string Id_txb
@@ -115,7 +120,10 @@ namespace MVVMDemo2.ViewModel
         }
         private void OnDelete()
         {
-            ListManga.Remove(SelectedManga);
+            MessageBoxResult rs = MessageBox.Show("Are you sure you want to delete this ?","Delete File",MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if (rs == MessageBoxResult.OK) 
+                ListManga.Remove(SelectedManga);
+            Reload();
         }
         private bool CanDelete()
         {
@@ -126,14 +134,8 @@ namespace MVVMDemo2.ViewModel
         {
             Manga addItem = new Manga(Id_txb, Name_txb, Episode_txb, Decription_txb, Age_txb);
             ListManga.Add(addItem);
-
-            Id_txb = string.Empty;
-            Name_txb = string.Empty;
-            Episode_txb = 0;
-            Decription_txb = string.Empty;
-            Age_txb = string.Empty;
-
-            EditableManga = new SimpleEditableManga();
+            MessageBox.Show("Add successful!", "Result", MessageBoxButton.OK ,MessageBoxImage.Information);
+            Reload();
         }
         private bool CanAdd()
         {
@@ -143,21 +145,54 @@ namespace MVVMDemo2.ViewModel
 
         private void OnUpdate()
         {
-
+            Manga newManga = new Manga(Id_txb,Name_txb,Episode_txb,Decription_txb,Age_txb);
+            int index = ListManga.IndexOf(SelectedManga);
+            ListManga[index] = newManga;
+            MessageBox.Show("Update successful!", "Result", MessageBoxButton.OK, MessageBoxImage.Information);
+            Reload();
         }
         private bool CanUpdate()
         {
-            return true;
+            return SelectedManga != null;
         }
 
         private void OnCountItem()
         {
             MessageBox.Show("Number of manga in list : " + ListManga.Count);
         }
-        public bool CanCountItem()
+
+        private void Reload()
         {
-            return true;
+            SelectedManga = null;
+            Id_txb = string.Empty;
+            Name_txb = string.Empty;
+            Episode_txb = 0;
+            Decription_txb = string.Empty;
+            Age_txb = string.Empty;
         }
+        public void OnSelectedItemChanged()
+        {
+            if(SelectedManga != null)
+            {
+                Id_txb = SelectedManga.Id;
+                Name_txb = SelectedManga.Name;
+                Episode_txb = SelectedManga.Episode;
+                Decription_txb = SelectedManga.Description;
+                Age_txb = SelectedManga.Age;
+                
+                /*
+                OnPropertyChanged(nameof(Id_txb));
+                OnPropertyChanged(nameof(Name_txb));
+                OnPropertyChanged(nameof(Episode_txb));
+                OnPropertyChanged(nameof(Decription_txb));
+                OnPropertyChanged(nameof(Age_txb));
+                */
+                
+                MessageBox.Show(Id_txb);
+            }
+        }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(string propertyName)
