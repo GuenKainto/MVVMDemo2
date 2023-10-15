@@ -66,35 +66,47 @@
                VerticalAlignment="Top"/>
         
         <TextBox Name="Id_txb" 
-                 Text="{Binding Id_txb, Mode=TwoWay}"  
+                 Text="{Binding Id_txb,
+                        ValidatesOnNotifyDataErrors = True,
+                        ValidatesOnExceptions= True,
+                        UpdateSourceTrigger=PropertyChanged}"  
                  HorizontalAlignment="Left" 
                  Margin="112,249,0,0" 
                  TextWrapping="Wrap" 
                  VerticalAlignment="Top" 
                  Width="120"/>
         <TextBox Name="Name_txb" 
-                 Text="{Binding Name_txb, Mode=TwoWay}" 
+                 Text="{Binding Name_txb,
+                        ValidatesOnNotifyDataErrors = True,
+                        ValidatesOnExceptions= True,
+                        UpdateSourceTrigger=PropertyChanged}" 
                  HorizontalAlignment="Left" 
                  Margin="112,276,0,0" 
                  TextWrapping="Wrap" 
                  VerticalAlignment="Top" 
                  Width="120"/>
         <TextBox Name="Episode_txb" 
-                 Text="{Binding Episode_txb, Mode=TwoWay}" 
+                 Text="{Binding Episode_txb,
+                        ValidatesOnNotifyDataErrors = True,
+                        ValidatesOnExceptions= True,
+                        UpdateSourceTrigger=PropertyChanged}" 
                  HorizontalAlignment="Left" 
                  Margin="112,307,0,0" 
                  TextWrapping="Wrap" 
                  VerticalAlignment="Top" 
                  Width="120"/>
         <TextBox Name="Age_txb" 
-                 Text="{Binding Age_txb, Mode=TwoWay}"
+                 Text="{Binding Age_txb,
+                        ValidatesOnNotifyDataErrors = True,
+                        ValidatesOnExceptions= True,
+                        UpdateSourceTrigger=PropertyChanged}"
                  HorizontalAlignment="Left"
                  Margin="112,334,0,0"
                  TextWrapping="Wrap"
                  VerticalAlignment="Top"
                  Width="120"/>
         <TextBox Name="Decription_txb"
-                 Text="{Binding Decription_txb, Mode=TwoWay}"
+                 Text="{Binding Decription_txb}"
                  HorizontalAlignment="Left"
                  TextWrapping="Wrap"
                  VerticalAlignment="Top"

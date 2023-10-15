@@ -66,5 +66,6 @@ namespace MVVMDemo2.Model
                 SetProperty(ref _age, value);
             }
         }
+
     }
 }

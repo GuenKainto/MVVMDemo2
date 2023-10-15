@@ -3,10 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace MVVMDemo2.ViewModel
 {
@@ -22,7 +24,8 @@ namespace MVVMDemo2.ViewModel
             DeleteMangaCommand = new MyICommand(OnDelete, CanDelete);
             AddMangaCommand = new MyICommand(OnAdd, CanAdd);
             CountItemCommand = new MyICommand(OnCountItem,CanCountItem);
-            
+            EditableManga = new SimpleEditableManga();
+
         }
         public ObservableCollection<Manga> ListManga { get; set; }
         public void ShowUpMangaList()
@@ -123,11 +126,20 @@ namespace MVVMDemo2.ViewModel
         {
             Manga addItem = new Manga(Id_txb, Name_txb, Episode_txb, Decription_txb, Age_txb);
             ListManga.Add(addItem);
+
+            Id_txb = string.Empty;
+            Name_txb = string.Empty;
+            Episode_txb = 0;
+            Decription_txb = string.Empty;
+            Age_txb = string.Empty;
+
+            EditableManga = new SimpleEditableManga();
         }
         private bool CanAdd()
         {
             return true;
         }
+
 
         private void OnUpdate()
         {
