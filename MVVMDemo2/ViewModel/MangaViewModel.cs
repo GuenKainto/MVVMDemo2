@@ -68,56 +68,11 @@ namespace MVVMDemo2.ViewModel
 
         /// ////////////////////////////////////////////
 
-        private string _id_txb;
-        public string Id_txb
-        {
-            get => _id_txb;
-            set
-            {
-                _id_txb = value;
-                OnPropertyChanged(nameof(Id_txb));
-            }
-        }
-        private string _name_txb;
-        public string Name_txb
-        {
-            get => _name_txb;
-            set
-            {
-                _name_txb = value;
-                OnPropertyChanged(nameof(Name_txb));
-            }
-        }
-        private int _episode_txb;
-        public int Episode_txb
-        {
-            get => _episode_txb;
-            set
-            {
-                _episode_txb = value;
-                OnPropertyChanged(nameof(Episode_txb));
-            }
-        }
-        private string _decription_txb;
-        public string Decription_txb
-        {
-            get => _decription_txb;
-            set
-            {
-                _decription_txb = value;
-                OnPropertyChanged(nameof(Decription_txb));
-            }
-        }
-        private string _age_txb;
-        public string Age_txb
-        {
-            get => _age_txb;
-            set
-            {
-                _age_txb = value;
-                OnPropertyChanged(nameof(Age_txb));
-            }
-        }
+        public string Id_txb { get; set; }
+        public string Name_txb { get; set; }
+        public int Episode_txb { get; set; }
+        public string Decription_txb { get; set; }
+        public string Age_txb { get; set; }
         private void OnDelete()
         {
             MessageBoxResult rs = MessageBox.Show("Are you sure you want to delete this ?","Delete File",MessageBoxButton.OKCancel, MessageBoxImage.Warning);
