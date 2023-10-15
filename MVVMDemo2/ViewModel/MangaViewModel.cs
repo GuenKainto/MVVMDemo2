@@ -49,7 +49,6 @@ namespace MVVMDemo2.ViewModel
             set
             {
                 _selectedManga = value;
-                OnPropertyChanged(nameof(SelectedManga));
                 OnSelectedItemChanged();
                 DeleteMangaCommand.RaiseCanExecuteChanged();
                 UpdateMangaCommand.RaiseCanExecuteChanged();
@@ -134,26 +133,18 @@ namespace MVVMDemo2.ViewModel
                 Episode_txb = SelectedManga.Episode;
                 Decription_txb = SelectedManga.Description;
                 Age_txb = SelectedManga.Age;
-                
-                /*
-                OnPropertyChanged(nameof(Id_txb));
-                OnPropertyChanged(nameof(Name_txb));
-                OnPropertyChanged(nameof(Episode_txb));
-                OnPropertyChanged(nameof(Decription_txb));
-                OnPropertyChanged(nameof(Age_txb));
-                */
-                
                 MessageBox.Show(Id_txb);
             }
         }
 
-
+        /*
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
+        */
+        
     }
 }
