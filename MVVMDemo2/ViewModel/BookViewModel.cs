@@ -49,7 +49,6 @@ namespace MVVMDemo2.ViewModel
         private void OnDelete()
         {
             ListBook.Remove(SelectedBook);
-            MessageBox.Show(ListBook.Count + "");
         }
 
         private bool CanDelete()

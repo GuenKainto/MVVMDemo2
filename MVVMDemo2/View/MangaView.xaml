@@ -5,8 +5,100 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MVVMDemo2.View"
              mc:Ignorable="d" Background="White"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="440" d:DesignWidth="800">
     <Grid>
-        <TextBlock Text="MangaView" Margin="364,211,364,211" />
+        <DataGrid Name="Manga_dtg" 
+                  ItemsSource="{Binding ListManga}" 
+                  HorizontalAlignment="Left" 
+                  Width="428" Margin="34,35,0,225" 
+                  AutoGenerateColumns="False" 
+                  IsReadOnly="True"
+                  SelectedItem="{Binding SelectedManga}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Width="*" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Name" Width="2.25*" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Episode" Width="1.25*" Binding="{Binding Episode}"/>
+                <DataGridTextColumn Header="Description" Width="4.5*" Binding="{Binding Description}"/>
+                <DataGridTextColumn Header="Age" Width="*" Binding="{Binding Age}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Content="Add"
+                Command="{Binding AddMangaCommand}"
+                HorizontalAlignment = "Left" 
+                VerticalAlignment = "Top" 
+                Width = "75" Margin="671,63,0,0"/>
+        <Button Content="Delete"
+                Command="{Binding DeleteMangaCommand}"
+                HorizontalAlignment = "Left" 
+                VerticalAlignment = "Top" 
+                Width = "75" Margin="671,38,0,0"/>
+        <Button Content="Update"
+                Command="{Binding UpdateMangaCommand}"
+                HorizontalAlignment = "Left" 
+                VerticalAlignment = "Top" 
+                Width = "75" Margin="671,88,0,0"/>
+        <Button Content="Count"
+                Command="{Binding CountItemCommand}"
+                HorizontalAlignment = "Left" 
+                VerticalAlignment = "Top" 
+                Width = "75" Margin="671,113,0,0"/>
+        
+        <Label Content="Id:" 
+               HorizontalAlignment="Left" 
+               Margin="34,241,0,0" 
+               VerticalAlignment="Top"/>
+        <Label Content="Name:" 
+               HorizontalAlignment="Left" 
+               Margin="34,272,0,0" 
+               VerticalAlignment="Top"/>
+        <Label Content="Episode:" 
+               HorizontalAlignment="Left" 
+               Margin="34,303,0,0" 
+               VerticalAlignment="Top"/>
+        <Label Content="Decription:" 
+               HorizontalAlignment="Left" 
+               Margin="290,236,0,0" 
+               VerticalAlignment="Top"/>
+        <Label Content="Age:" 
+               HorizontalAlignment="Left" 
+               Margin="34,330,0,0" 
+               VerticalAlignment="Top"/>
+        
+        <TextBox Name="Id_txb" 
+                 Text="{Binding Id_txb, Mode=TwoWay}"  
+                 HorizontalAlignment="Left" 
+                 Margin="112,249,0,0" 
+                 TextWrapping="Wrap" 
+                 VerticalAlignment="Top" 
+                 Width="120"/>
+        <TextBox Name="Name_txb" 
+                 Text="{Binding Name_txb, Mode=TwoWay}" 
+                 HorizontalAlignment="Left" 
+                 Margin="112,276,0,0" 
+                 TextWrapping="Wrap" 
+                 VerticalAlignment="Top" 
+                 Width="120"/>
+        <TextBox Name="Episode_txb" 
+                 Text="{Binding Episode_txb, Mode=TwoWay}" 
+                 HorizontalAlignment="Left" 
+                 Margin="112,307,0,0" 
+                 TextWrapping="Wrap" 
+                 VerticalAlignment="Top" 
+                 Width="120"/>
+        <TextBox Name="Age_txb" 
+                 Text="{Binding Age_txb, Mode=TwoWay}"
+                 HorizontalAlignment="Left"
+                 Margin="112,334,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="120"/>
+        <TextBox Name="Decription_txb"
+                 Text="{Binding Decription_txb, Mode=TwoWay}"
+                 HorizontalAlignment="Left"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Height="85" Width="172"
+                 Margin="290,262,338,93"/>
     </Grid>
 </UserControl>
