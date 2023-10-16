@@ -46,7 +46,7 @@ namespace WpfAppDemo.Service
             return list;
         }
 
-        public bool AddService(Manga manga)
+        public bool Add_Service(Manga manga)
         {
             string querry = "INSERT INTO Manga VALUES (@id,@name,@episode,@description,@age)";
             if (dtc.GetConnection().State == System.Data.ConnectionState.Closed)

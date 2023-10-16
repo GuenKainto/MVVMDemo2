@@ -195,8 +195,9 @@
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="MyICommand.cs" />
     <Compile Include="NavigateICommand.cs" />
-    <Compile Include="Ser vice\DatabaseConnection.cs" />
-    <Compile Include="Ser vice\MangaManagerService.cs" />
+    <Compile Include="Service\BookManagerService.cs" />
+    <Compile Include="Service\DatabaseConnection.cs" />
+    <Compile Include="Service\MangaManagerService.cs" />
     <Compile Include="ViewModel\BookViewModel.cs" />
     <Compile Include="ViewModel\MangaViewModel.cs" />
     <Compile Include="Views\BookView.xaml.cs">

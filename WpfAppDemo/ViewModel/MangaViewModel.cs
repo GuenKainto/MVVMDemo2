@@ -40,7 +40,7 @@ namespace WpfAppDemo.ViewModel
         private void OnAdd()
         {
             Manga item = new Manga(Id_txb, Name_txb, Episode_txb, Description_txb, Age_txb);
-            if(sv.AddService(item))
+            if(sv.Add_Service(item))
                 MessageBox.Show("Successful","Message",MessageBoxButton.OK,MessageBoxImage.Information);
             OnReload();
         }

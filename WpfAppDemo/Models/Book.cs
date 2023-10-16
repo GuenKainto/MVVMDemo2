@@ -10,7 +10,7 @@ namespace WpfAppDemo.Models
     internal class Book
     {
         public Book() { }
-        public Book(string id, string name, string dateRelease, string publisher)
+        public Book(string id, string name, DateTime dateRelease, string publisher)
         {
             B_ID = id;
             B_Name = name;
@@ -41,8 +41,8 @@ namespace WpfAppDemo.Models
                 RaisePropertyChanged(nameof(B_Name));
             }
         }
-        private string _bDateRelease;
-        public string B_DateRelease
+        private DateTime _bDateRelease;
+        public DateTime B_DateRelease
         {
             get => _bDateRelease;
             set 

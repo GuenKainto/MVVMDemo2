@@ -84,7 +84,7 @@
                 <Button Margin="10" Grid.Row="2"  
                         Content="Update" Width="70" Height="35"
                         HorizontalAlignment="Right"
-                        Command="{Binding UpdateCommmand}"/>
+                        Command="{Binding UpdateCommand}"/>
                 <Button Margin="10" Grid.Row="3" 
                         Content="Reload" Width="70" Height="35"
                         HorizontalAlignment="Right"
@@ -98,7 +98,8 @@
                   Background="LightGray" 
                   ItemsSource="{Binding ListBook}" 
                   Width="900" Height="350"
-                  IsReadOnly="True">
+                  IsReadOnly="True"
+                  SelectedItem="{Binding SelectedBook}">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="0.5*" Header="ID" Binding="{Binding B_ID}" />
                 <DataGridTextColumn Width="4*" Header="Name" Binding="{Binding B_Name}"/>
