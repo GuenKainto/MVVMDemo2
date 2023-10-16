@@ -49,13 +49,25 @@
                        Content="Age" Height="30"/>
 
                 <TextBox Margin="10" Grid.Row="0" Grid.Column="1" 
-                         Height="30" Width="200" HorizontalAlignment="Left"/>
+                         Height="30" Width="200" 
+                         HorizontalAlignment="Left"
+                         Text="{Binding Id_txb, Mode=TwoWay,
+                                UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox Margin="10" Grid.Row="1" Grid.Column="1" 
-                         Height="30" Width="200" HorizontalAlignment="Left"/>
-                <DatePicker Margin="10" Grid.Row="2" Grid.Column="1" 
-                            Height="30" Width="200" HorizontalAlignment="Left"/>
+                         Height="30" Width="200" 
+                         HorizontalAlignment="Left"
+                         Text="{Binding Name_txb, Mode=TwoWay,
+                                UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Margin="10" Grid.Row="2" Grid.Column="1" 
+                         Height="30" Width="200" 
+                         HorizontalAlignment="Left"
+                         Text="{Binding Episode_txb, Mode=TwoWay,
+                                  UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox Margin="10" Grid.Row="3" Grid.Column="1" 
-                         Height="30" Width="200" HorizontalAlignment="Left"/>
+                         Height="30" Width="200" 
+                         HorizontalAlignment="Left"
+                         Text="{Binding Age_txb, Mode=TwoWay,
+                                UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
 
             <Grid Grid.Column="2">
@@ -64,8 +76,12 @@
                     <RowDefinition Height="6*"/>
                 </Grid.RowDefinitions>
                 <Label Content="Description"
-                       Grid.Row="0" Width="90" Height="30" Margin="20,8,276,0"/>
-                <TextBox Grid.Row="1" Margin="20"/>
+                       Grid.Row="0" 
+                       Width="90" Height="30" 
+                       Margin="20,8,276,0"/>
+                <TextBox Grid.Row="1" Margin="20"
+                         Text="{Binding Description_txb, Mode=TwoWay,
+                                UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
 
                 <Grid Grid.Column="3">
@@ -78,16 +94,20 @@
 
                 <Button Margin="10" Grid.Row="0" 
                         Content="Add" Width="70" Height="35"
-                        HorizontalAlignment="Right"/>
+                        HorizontalAlignment="Right"
+                        Command="{Binding AddCommand}"/>
                 <Button Margin="10" Grid.Row="1" 
                         Content="Delete" Width="70" Height="35"
-                        HorizontalAlignment="Right"/>
+                        HorizontalAlignment="Right"
+                        Command="{Binding DeleteCommand}"/>
                 <Button Margin="10" Grid.Row="2"  
                         Content="Update" Width="70" Height="35"
-                        HorizontalAlignment="Right"/>
+                        HorizontalAlignment="Right"
+                        Command="{Binding UpdateCommand}"/>
                 <Button Margin="10" Grid.Row="3" 
                         Content="Reload" Width="70" Height="35"
-                        HorizontalAlignment="Right"/>
+                        HorizontalAlignment="Right"
+                        Command="{Binding ReloadCommand}"/>
             </Grid>
         </Grid>
 
@@ -97,7 +117,8 @@
           Background="LightGray" 
           ItemsSource="{Binding ListManga}" 
           Width="900" Height="350"
-          IsReadOnly="True">
+          IsReadOnly="True"
+          SelectedItem="{Binding SelectedManga}">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="0.5*" Header="ID" Binding="{Binding M_ID}" />
                 <DataGridTextColumn Width="3*" Header="Name" Binding="{Binding M_Name}"/>
@@ -105,11 +126,6 @@
                 <DataGridTextColumn Width="4*" Header="Description" Binding="{Binding M_Description}"/>
                 <DataGridTextColumn Width="*" Header="Age" Binding="{Binding M_Age}"/>
             </DataGrid.Columns>
-
-            <Label Content="ID"/>
-            <Label Content="Name"/>
-            <Label Content="Date Release"/>
-            <Label Content="Publisher"/>
         </DataGrid>
     </Grid>
 </UserControl>

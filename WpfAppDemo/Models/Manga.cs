@@ -58,7 +58,7 @@ namespace WpfAppDemo.Models
         private string _mDescription;
         public string M_Description
         {
-            get => M_Description;
+            get => _mDescription;
             set
             {
                 if (_mDescription != value)
@@ -86,6 +86,11 @@ namespace WpfAppDemo.Models
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(property));
             }
+        }
+
+        public string ToString()
+        {
+            return M_ID + " " + M_Name + " " + M_Episode + " " + M_Description + " " + M_Age;
         }
     }
 }

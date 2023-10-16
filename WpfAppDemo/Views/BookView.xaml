@@ -48,13 +48,21 @@
                        Content="Publisher" Height="30"/>
 
                 <TextBox Margin="10" Grid.Row="0" Grid.Column="1" 
-                         Height="30" Width="200" HorizontalAlignment="Left"/>
+                         Height="30" Width="200" HorizontalAlignment="Left"
+                         Text="{Binding Id_txb, Mode=TwoWay,
+                                UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox Margin="10" Grid.Row="1" Grid.Column="1" 
-                         Height="30" Width="200" HorizontalAlignment="Left"/>
+                         Height="30" Width="200" HorizontalAlignment="Left"
+                         Text="{Binding Name_txb, Mode=TwoWay,
+                                UpdateSourceTrigger=PropertyChanged}"/>
                 <DatePicker Margin="10" Grid.Row="2" Grid.Column="1" 
-                            Height="30" Width="200" HorizontalAlignment="Left"/>
+                            Height="30" Width="200" HorizontalAlignment="Left"
+                            Text="{Binding DateRelease_dtp, Mode=TwoWay,
+                                   UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox Margin="10" Grid.Row="3" Grid.Column="1" 
-                         Height="30" Width="200" HorizontalAlignment="Left"/>
+                         Height="30" Width="200" HorizontalAlignment="Left"
+                         Text="{Binding Publisher_txb, Mode=TwoWay,
+                                UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
 
             <Grid Grid.Column="2">
@@ -64,21 +72,24 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                
+
                 <Button Margin="10" Grid.Row="0" 
                         Content="Add" Width="70" Height="35"
-                        HorizontalAlignment="Right"/>
+                        HorizontalAlignment="Right"
+                        Command="{Binding AddCommand}"/>
                 <Button Margin="10" Grid.Row="1" 
                         Content="Delete" Width="70" Height="35"
-                        HorizontalAlignment="Right"/>
+                        HorizontalAlignment="Right"
+                        Command="{Binding DeleteCommand}"/>
                 <Button Margin="10" Grid.Row="2"  
                         Content="Update" Width="70" Height="35"
-                        HorizontalAlignment="Right"/>
+                        HorizontalAlignment="Right"
+                        Command="{Binding UpdateCommmand}"/>
                 <Button Margin="10" Grid.Row="3" 
                         Content="Reload" Width="70" Height="35"
-                        HorizontalAlignment="Right"/>
+                        HorizontalAlignment="Right"
+                        Command="{Binding ReloadCommand}"/>
             </Grid>
-
         </Grid>
 
         <DataGrid Name="Book_dtg" 
@@ -89,7 +100,7 @@
                   Width="900" Height="350"
                   IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="1*" Header="ID" Binding="{Binding B_ID}" />
+                <DataGridTextColumn Width="0.5*" Header="ID" Binding="{Binding B_ID}" />
                 <DataGridTextColumn Width="4*" Header="Name" Binding="{Binding B_Name}"/>
                 <DataGridTextColumn Width="2.5*" Header="Date Release" Binding="{Binding B_DateRelease}"/>
                 <DataGridTextColumn Width="2.5*" Header="Publisher" Binding="{Binding B_Publisher}"/>
