@@ -14,20 +14,48 @@ namespace MVVMDemo2.ViewModel
 {
     internal class MangaViewModel : BindableBase
     {
+
+
+
+        #region commands
         public MyICommand DeleteMangaCommand { get; set; }
         public MyICommand AddMangaCommand { get; set; }
         public MyICommand UpdateMangaCommand { get; set; }
         public MyICommand CountItemCommand { get; set; }
         public MyICommand ReloadCommand { get; set; }
-        public MangaViewModel()
+        #endregion
+
+
+        #region properties
+
+        public string? Id_txb { get; set; }
+        public string? Name_txb { get; set; }
+        public int Episode_txb { get; set; }
+        public string? Decription_txb { get; set; }
+        public string? Age_txb { get; set; }
+        #endregion
+
+
+        public void Init_Command()
         {
-            ShowUpMangaList();
             DeleteMangaCommand = new MyICommand(OnDelete, CanDelete);
             AddMangaCommand = new MyICommand(OnAdd, CanAdd);
             UpdateMangaCommand = new MyICommand(OnUpdate, CanUpdate);
-            CountItemCommand = new MyICommand(OnCountItem);
-            ReloadCommand = new MyICommand(Reload);
+            CountItemCommand = new MyICommand(OnCountItem, () => true);
+            ReloadCommand = new MyICommand(OnReload, () => true);
+        }
+
+        public void Init_Properties()
+        {
             EditableManga = new SimpleEditableManga();
+            ShowUpMangaList();
+
+        }
+
+        public MangaViewModel()
+        {
+            Init_Command();
+            Init_Properties();
 
         }
         public ObservableCollection<Manga> ListManga { get; set; }
@@ -65,19 +93,16 @@ namespace MVVMDemo2.ViewModel
             }
         }
 
+        /// //////////////////////////////////////////// <summary>
         /// ////////////////////////////////////////////
+        /// </summary>
 
-        public string Id_txb { get; set; }
-        public string Name_txb { get; set; }
-        public int Episode_txb { get; set; }
-        public string Decription_txb { get; set; }
-        public string Age_txb { get; set; }
         private void OnDelete()
         {
-            MessageBoxResult rs = MessageBox.Show("Are you sure you want to delete this ?","Delete File",MessageBoxButton.OKCancel, MessageBoxImage.Warning);
-            if (rs == MessageBoxResult.OK) 
+            MessageBoxResult rs = MessageBox.Show("Are you sure you want to delete this ?", "Delete File", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if (rs == MessageBoxResult.OK)
                 ListManga.Remove(SelectedManga);
-            Reload();
+            OnReload();
         }
         private bool CanDelete()
         {
@@ -88,8 +113,8 @@ namespace MVVMDemo2.ViewModel
         {
             Manga addItem = new Manga(Id_txb, Name_txb, Episode_txb, Decription_txb, Age_txb);
             ListManga.Add(addItem);
-            MessageBox.Show("Add successful!", "Result", MessageBoxButton.OK ,MessageBoxImage.Information);
-            Reload();
+            MessageBox.Show("Add successful!", "Result", MessageBoxButton.OK, MessageBoxImage.Information);
+            OnReload();
         }
         private bool CanAdd()
         {
@@ -97,13 +122,30 @@ namespace MVVMDemo2.ViewModel
         }
 
 
+        private string _nameTextBoxTest;
+
+        public string NameTextBoxTest
+        {
+            get { return _nameTextBoxTest; }
+            set
+            {
+                if (_nameTextBoxTest != value)
+                {
+                    _nameTextBoxTest = value;
+                    OnPropertyChanged(nameof(NameTextBoxTest));
+                }
+            }
+        }
+
+
+
         private void OnUpdate()
         {
-            Manga newManga = new Manga(Id_txb,Name_txb,Episode_txb,Decription_txb,Age_txb);
+            Manga newManga = new Manga(Id_txb, Name_txb, Episode_txb, Decription_txb, Age_txb);
             int index = ListManga.IndexOf(SelectedManga);
             ListManga[index] = newManga;
             MessageBox.Show("Update successful!", "Result", MessageBoxButton.OK, MessageBoxImage.Information);
-            Reload();
+            OnReload();
         }
         private bool CanUpdate()
         {
@@ -115,9 +157,8 @@ namespace MVVMDemo2.ViewModel
             MessageBox.Show("Number of manga in list : " + ListManga.Count);
         }
 
-        private void Reload()
+        private void OnReload()
         {
-            SelectedManga = null;
             Id_txb = string.Empty;
             Name_txb = string.Empty;
             Episode_txb = 0;
@@ -126,9 +167,10 @@ namespace MVVMDemo2.ViewModel
         }
         public void OnSelectedItemChanged()
         {
-            if(SelectedManga != null)
+            if (SelectedManga != null)
             {
                 Id_txb = SelectedManga.Id;
+                NameTextBoxTest = Guid.NewGuid().ToString();
                 Name_txb = SelectedManga.Name;
                 Episode_txb = SelectedManga.Episode;
                 Decription_txb = SelectedManga.Description;
@@ -137,14 +179,11 @@ namespace MVVMDemo2.ViewModel
             }
         }
 
-        /*
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged(string propertyName)
+        protected override void OnPropertyChanged(string propertyName)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            base.OnPropertyChanged(propertyName);
         }
-        */
-        
+
+
     }
 }

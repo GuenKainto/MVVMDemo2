@@ -81,7 +81,7 @@
                  VerticalAlignment="Top" 
                  Width="120"/>
         <TextBox Name="Name_txb" 
-                 Text="{Binding Name_txb,Mode= TwoWay,
+                 Text="{Binding NameTextBoxTest,Mode= TwoWay,
                         ValidatesOnNotifyDataErrors = True,
                         ValidatesOnExceptions= True,
                         UpdateSourceTrigger=PropertyChanged}" 

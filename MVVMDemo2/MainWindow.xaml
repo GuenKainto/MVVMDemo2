@@ -7,7 +7,9 @@
         xmlns:views="clr-namespace:MVVMDemo2.View"
         xmlns:viewModels = "clr-namespace:MVVMDemo2.ViewModel" 
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        ResizeMode="CanResize"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="720" Width="800">
 
     <Window.DataContext>
         <local:MainWindowViewModel/>
